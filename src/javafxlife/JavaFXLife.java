@@ -66,8 +66,9 @@ public class JavaFXLife extends Application {
         final Menu speedMenu = new Menu("Speed");
         final Menu optionsMenu = new Menu("Options");
         final Menu helpMenu = new Menu("Help");
+        final Menu advancedMenu = new Menu("Speed Advanced");
 
-        myBar.getMenus().addAll(fileMenu, speedMenu, optionsMenu, helpMenu);
+        myBar.getMenus().addAll(fileMenu, speedMenu, optionsMenu, helpMenu, advancedMenu);
 
         /**
          * *********************************************************************
@@ -155,6 +156,20 @@ public class JavaFXLife extends Application {
 
         /**
          * *********************************************************************
+         * Advanced Speed Menu Section
+         */
+    MenuItem doubleSpd = new MenuItem("2X speed");
+        doubleSpd.setAccelerator(KeyCombination.keyCombination("Ctrl+Shift+P"));
+        doubleSpd.setOnAction(e -> lifePane.increaseSpeedx2());
+        advancedMenu.getItems().add(doubleSpd);
+
+        MenuItem halfspd = new MenuItem("Half Speed");
+        halfspd.setAccelerator(KeyCombination.keyCombination("Ctrl+Shift+M"));
+        halfspd.setOnAction(e -> lifePane.decreaseSpeedx2());
+        advancedMenu.getItems().add(halfspd);
+
+        /**
+         * *********************************************************************
          * Options Menu Section
          */
         MenuItem randomize = new MenuItem("Randomize Cells");
@@ -171,16 +186,15 @@ public class JavaFXLife extends Application {
          * *********************************************************************
          * Help Menu Section
          */
-        
-        MenuItem jp = new MenuItem("JP");
-        jp.setOnAction(e -> {
+        MenuItem lr = new MenuItem("LR");
+        lr.setOnAction(e -> {
             lifePane.pause();
             lifePane.clearCells();
-            readFile(new File("jp.txt"));
+            readFile(new File("lr.txt"));
             lifePane.drawCells();
         });
-        helpMenu.getItems().add(jp);        
-        
+        helpMenu.getItems().add(lr);
+
         MenuItem acorn = new MenuItem("Acorn");
         acorn.setOnAction(e -> {
             lifePane.pause();

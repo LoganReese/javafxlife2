@@ -130,6 +130,16 @@ public class LifePane extends ScrollPane {
         }
     }
 
+    public void increaseSpeedx2() {
+        animation.setRate(animation.getRate() * 2.0);
+    }
+
+    public void decreaseSpeedx2() {
+        if (animation.getRate() >= 1.0) {
+            animation.setRate(animation.getRate() / 2.0);
+        }
+    }
+
     public void resetSpeed() {
         animation.setRate(1.0);
     }
